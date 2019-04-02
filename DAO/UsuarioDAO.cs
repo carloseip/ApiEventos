@@ -33,7 +33,7 @@ namespace DAO
             }
             catch (Exception e)
             {
-                rpt = "no";
+                rpt = "Excepción ocurrida: " + e.Message;
             }
             finally
             {
@@ -54,9 +54,10 @@ namespace DAO
 
                 lis = cn.Query<UsuarioModel>("itLogin.SP_S_USUARIO", dypa, commandType: CommandType.StoredProcedure).ToList();
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 lis = null;
+                var rpt = "Excepción ocurrida: " + e.Message;
             }
             finally
             {
@@ -79,7 +80,7 @@ namespace DAO
             }
             catch (Exception e)
             {
-                rpt = "no";
+                rpt = "Excepción ocurrida: " + e.Message;
             }
             finally
             {
@@ -98,8 +99,9 @@ namespace DAO
                 dypa.Add("@IdUsuario", IdUsuario);
                 lis = cn.Query<UsuarioModelActualizar>("itLogin.SP_S_ID_USUARIO", dypa, commandType: CommandType.StoredProcedure).First();
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                var rpt = "Excepción ocurrida: " + e.Message;
                 lis = null;
             }
             finally
@@ -129,9 +131,9 @@ namespace DAO
 
                 cn.Execute("itLogin.SP_U_USUARIO", dp1, commandType: CommandType.StoredProcedure);
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                rpt = "no";
+                rpt = "Excepción ocurrida: " + e.Message;
             }
             finally
             {

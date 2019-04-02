@@ -22,8 +22,9 @@ namespace DAO
                 DynamicParameters dypa = new DynamicParameters();
                 lis = cn.Query<CobroModelView>("itData.SP_S_Cobro", dypa, commandType: CommandType.StoredProcedure).ToList();
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                var rpt = "Excepción ocurrida: " + e.Message;
                 lis = null;
             }
             finally
@@ -48,6 +49,7 @@ namespace DAO
             }
             catch (Exception e)
             {
+                var rpt = "Excepción ocurrida: " + e.Message;
                 lis = null;
             }
             finally
@@ -92,7 +94,7 @@ namespace DAO
             catch (Exception e)
             {
                 tran.Rollback();
-                rpt = "no";
+                rpt = "Excepción ocurrida: " + e.Message;
             }
             finally
             {
@@ -134,7 +136,7 @@ namespace DAO
             catch (Exception e)
             {
                 tran.Rollback();
-                rpt = "no";
+                rpt = "Excepción ocurrida: " + e.Message;
             }
             finally
             {
@@ -164,7 +166,7 @@ namespace DAO
             catch (Exception e)
             {
                 tran.Rollback();
-                rpt = "no";
+                rpt = "Excepción ocurrida: " + e.Message;
             }
             finally
             {

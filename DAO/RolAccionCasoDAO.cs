@@ -40,7 +40,7 @@ namespace DAO
             }
             catch (Exception e)
             {
-                rpt = "no";
+                rpt = "Excepción ocurrida: " + e.Message;
                 tran.Rollback();
             }
             finally
